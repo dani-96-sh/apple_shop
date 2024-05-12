@@ -4,46 +4,46 @@ class SortItem extends StatelessWidget {
   SortItem({super.key});
 
   List<String> Name = [
-    'Categori 1',
-    'Categori 2',
-    'Categori 3',
-    'Categori 4',
-    'Categori 5',
-    'Categori 6',
-    'Categori 7',
-    'Categori 8'
+    'Iphone',
+    'Mac',
+    'Watch',
+    'Display',
+    'TV',
+    'Mouse',
+    'KeyBoard',
+    'PlayStation'
   ];
   List<Icon> icons = [
     Icon(
-      Icons.safety_check_outlined,
+      Icons.phone_iphone_rounded,
       color: Colors.white,
     ),
     Icon(
-      Icons.monochrome_photos_rounded,
+      Icons.laptop_mac_rounded,
       color: Colors.white,
     ),
     Icon(
-      Icons.cabin_outlined,
+      Icons.watch_rounded,
       color: Colors.white,
     ),
     Icon(
-      Icons.read_more_rounded,
+      Icons.monitor_rounded,
       color: Colors.white,
     ),
     Icon(
-      Icons.safety_check_outlined,
+      Icons.tv,
       color: Colors.white,
     ),
     Icon(
-      Icons.monochrome_photos_rounded,
+      Icons.mouse,
       color: Colors.white,
     ),
     Icon(
-      Icons.cabin_outlined,
+      Icons.keyboard_alt_rounded,
       color: Colors.white,
     ),
     Icon(
-      Icons.read_more_rounded,
+      Icons.games_outlined,
       color: Colors.white,
     )
   ];
@@ -59,6 +59,7 @@ class SortItem extends StatelessWidget {
             return Padding(
               padding: const EdgeInsets.symmetric(vertical: 15),
               child: Column(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
                   Container(
                       margin: EdgeInsets.symmetric(horizontal: 20),

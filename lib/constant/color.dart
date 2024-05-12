@@ -3,4 +3,5 @@ import 'package:hexcolor/hexcolor.dart';
 
 class CustomColors {
   static Color blueindicator = HexColor('#3B5EDf');
+  static Color background = HexColor('#EEEEEE');
 }

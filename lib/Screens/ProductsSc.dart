@@ -1,5 +1,6 @@
 import 'package:apple_shop/Widgets/SortItems.dart';
 import 'package:apple_shop/Widgets/banner_slider.dart';
+import 'package:apple_shop/constant/color.dart';
 import 'package:flutter/material.dart';
 
 class ProductSc extends StatefulWidget {
@@ -13,6 +14,7 @@ class _ProductScState extends State<ProductSc> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        backgroundColor: CustomColors.background,
         appBar: AppBar(
           centerTitle: true,
           title: Text(''),
@@ -23,5 +25,3 @@ class _ProductScState extends State<ProductSc> {
         ));
   }
 }
-
-mixin abc_outlined {}
