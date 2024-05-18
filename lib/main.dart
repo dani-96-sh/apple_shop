@@ -1,4 +1,6 @@
 import 'package:apple_shop/Screens/ProductsSc.dart';
+import 'package:apple_shop/Screens/SortItemSc.dart';
+import 'package:apple_shop/Widgets/SortItems.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -18,6 +20,6 @@ class _MainPageState extends State<MainPage> {
     return MaterialApp(
         theme: ThemeData(fontFamily: 'GM'),
         debugShowCheckedModeBanner: false,
-        home: ProductSc());
+        home: SortScreen());
   }
 }

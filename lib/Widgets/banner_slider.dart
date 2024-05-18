@@ -1,13 +1,39 @@
+import 'dart:async';
+
 import 'package:apple_shop/constant/color.dart';
 import 'package:flutter/material.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 // ignore: must_be_immutable
-class BannerSlider extends StatelessWidget {
+class BannerSlider extends StatefulWidget {
   BannerSlider({super.key});
 
-  PageController controller = PageController(viewportFraction: 1);
+  @override
+  State<BannerSlider> createState() => _BannerSliderState();
+}
+
+class _BannerSliderState extends State<BannerSlider> {
+  PageController controller =
+      PageController(viewportFraction: 1, initialPage: 0);
+
   int sliderCount = 5;
+
+  int _currentpage = 0;
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    Timer.periodic(Duration(seconds: 3), (timer) {
+      if (_currentpage < sliderCount) {
+        _currentpage++;
+      } else {
+        _currentpage = 0;
+      }
+      controller.animateToPage(_currentpage,
+          duration: Duration(milliseconds: 600), curve: Curves.ease);
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -18,6 +44,11 @@ class BannerSlider extends StatelessWidget {
           width: 500,
           height: 200,
           child: PageView.builder(
+              onPageChanged: (int index) {
+                setState(() {
+                  _currentpage = index;
+                });
+              },
               itemCount: sliderCount,
               controller: controller,
               itemBuilder: (context, index) {
