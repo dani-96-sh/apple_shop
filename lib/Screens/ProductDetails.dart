@@ -1,8 +1,6 @@
+import 'dart:ui';
 import 'package:apple_shop/constant/color.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
-import 'package:flutter/widgets.dart';
 
 class ProductDetails extends StatefulWidget {
   const ProductDetails({super.key});
@@ -353,6 +351,124 @@ class _ProductDetailsState extends State<ProductDetails> {
                           borderRadius: BorderRadius.circular(10),
                           border: Border.all(width: 1, color: Colors.black)),
                     ),
+                    SizedBox(
+                      height: 15,
+                    ),
+                  ],
+                ),
+              ),
+            ),
+            SliverPadding(
+              padding: EdgeInsets.only(bottom: 12),
+              sliver: SliverToBoxAdapter(
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    Stack(
+                      alignment: Alignment.bottomCenter,
+                      children: [
+                        Container(
+                          width: 140,
+                          height: 60,
+                          decoration: BoxDecoration(
+                              color: Colors.green,
+                              borderRadius: BorderRadius.circular(12)),
+                        ),
+                        ClipRRect(
+                          borderRadius: BorderRadius.circular(15),
+                          child: BackdropFilter(
+                            filter: ImageFilter.blur(sigmaX: 10, sigmaY: 12),
+                            child: ClipRRect(
+                              child: Container(
+                                child: Row(
+                                  children: [
+                                    Icon(
+                                      Icons.attach_money_rounded,
+                                      color: Colors.white,
+                                    ),
+                                    SizedBox(
+                                      width: 5,
+                                    ),
+                                    Column(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceAround,
+                                      children: [
+                                        Text(
+                                          '1,200,000',
+                                          style: TextStyle(
+                                              color: Colors.white,
+                                              decoration:
+                                                  TextDecoration.lineThrough),
+                                        ),
+                                        Text(
+                                          '1,000,000',
+                                          style: TextStyle(color: Colors.white),
+                                        )
+                                      ],
+                                    ),
+                                    Spacer(),
+                                    Container(
+                                      margin:
+                                          EdgeInsets.symmetric(horizontal: 12),
+                                      padding: EdgeInsets.all(4),
+                                      decoration: BoxDecoration(
+                                          borderRadius:
+                                              BorderRadius.circular(4),
+                                          color: CustomColors.red),
+                                      child: Text(
+                                        '3%',
+                                        style: TextStyle(color: Colors.white),
+                                      ),
+                                    )
+                                  ],
+                                ),
+                                width: 160,
+                                height: 53,
+                                decoration: BoxDecoration(
+                                    color: Colors.transparent,
+                                    borderRadius: BorderRadius.circular(12)),
+                              ),
+                            ),
+                          ),
+                        )
+                      ],
+                    ),
+                    Stack(
+                      alignment: Alignment.bottomCenter,
+                      children: [
+                        Container(
+                          width: 140,
+                          height: 60,
+                          decoration: BoxDecoration(
+                              color: Colors.blue,
+                              borderRadius: BorderRadius.circular(12)),
+                        ),
+                        ClipRRect(
+                          borderRadius: BorderRadius.circular(15),
+                          child: BackdropFilter(
+                            filter: ImageFilter.blur(sigmaX: 10, sigmaY: 12),
+                            child: ClipRRect(
+                              child: Container(
+                                child: Center(
+                                  child: Text(
+                                    'Buy Now',
+                                    style: TextStyle(
+                                        fontFamily: 'GB',
+                                        fontSize: 17,
+                                        color: Colors.white),
+                                  ),
+                                ),
+                                width: 160,
+                                height: 53,
+                                decoration: BoxDecoration(
+                                    color: Colors.transparent,
+                                    borderRadius: BorderRadius.circular(12)),
+                              ),
+                            ),
+                          ),
+                        )
+                      ],
+                    )
                   ],
                 ),
               ),
