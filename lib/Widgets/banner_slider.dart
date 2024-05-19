@@ -22,7 +22,6 @@ class _BannerSliderState extends State<BannerSlider> {
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     Timer.periodic(Duration(seconds: 3), (timer) {
       if (_currentpage < sliderCount) {

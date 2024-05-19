@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+// ignore: must_be_immutable
 class SortItem extends StatelessWidget {
   SortItem({super.key});
 
@@ -60,30 +61,31 @@ class SortItem extends StatelessWidget {
               padding: const EdgeInsets.symmetric(vertical: 15),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: [
-                  Container(
-                      margin: EdgeInsets.symmetric(horizontal: 20),
-                      width: 56,
-                      height: 56,
-                      decoration: ShapeDecoration(
-                        shadows: [
-                          BoxShadow(
-                              color: Colors.red,
-                              spreadRadius: -12,
-                              blurRadius: 25,
-                              offset: Offset(0, 15))
-                        ],
-                        color: Colors.red,
-                        shape: ContinuousRectangleBorder(
-                          borderRadius: BorderRadius.circular(40),
-                        ),
-                      ),
-                      child: icons[index]),
-                  Text('${Name[index]}')
-                ],
+                children: [Itemchip(index), Text('${Name[index]}')],
               ),
             );
           }),
     );
+  }
+
+  Itemchip(int index) {
+    return Container(
+        margin: EdgeInsets.symmetric(horizontal: 20),
+        width: 56,
+        height: 56,
+        decoration: ShapeDecoration(
+          shadows: [
+            BoxShadow(
+                color: Colors.red,
+                spreadRadius: -12,
+                blurRadius: 25,
+                offset: Offset(0, 15))
+          ],
+          color: Colors.red,
+          shape: ContinuousRectangleBorder(
+            borderRadius: BorderRadius.circular(40),
+          ),
+        ),
+        child: icons[index]);
   }
 }

@@ -2,7 +2,7 @@ import 'package:apple_shop/Widgets/SortItems.dart';
 import 'package:apple_shop/Widgets/banner_slider.dart';
 import 'package:apple_shop/Widgets/product_item.dart';
 import 'package:apple_shop/constant/color.dart';
-import 'package:flutter/cupertino.dart';
+
 import 'package:flutter/material.dart';
 
 class ProductSc extends StatefulWidget {

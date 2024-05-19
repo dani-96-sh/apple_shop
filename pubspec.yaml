@@ -96,21 +96,7 @@ flutter:
         - asset: assets/fonts/GilroyHeavy.ttf
           weight: 900
 
-    - family: SM
-      fonts:
-        - asset: assets/fonts/ShabnamMedium.ttf
-          weight: 500
 
-    - family: SB
-      fonts:
-        - asset: assets/fonts/ShabnamBold.ttf
-          weight: 700
-
-
-    - family: dana
-      fonts:
-        - asset: assets/fonts/dana.ttf
-          weight: 500
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages
