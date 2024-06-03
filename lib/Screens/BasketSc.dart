@@ -1,8 +1,6 @@
 import 'package:apple_shop/constant/color.dart';
 import 'package:dotted_line/dotted_line.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 
 class BasketSC extends StatefulWidget {
   const BasketSC({super.key});
