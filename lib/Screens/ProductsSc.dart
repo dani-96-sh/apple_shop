@@ -2,6 +2,7 @@ import 'package:apple_shop/Widgets/SortItems.dart';
 import 'package:apple_shop/Widgets/banner_slider.dart';
 import 'package:apple_shop/Widgets/product_item.dart';
 import 'package:apple_shop/constant/color.dart';
+import 'package:apple_shop/test/test.dart';
 
 import 'package:flutter/material.dart';
 
@@ -146,7 +147,20 @@ class _ProductScState extends State<ProductSc> {
                   },
                 ),
               ),
-            )
+            ),
+            // SliverToBoxAdapter(
+            //   child: ElevatedButton(
+            //     child: Text('data'),
+            //     onPressed: () {
+            //       var either = sendData(2);
+            //       either.fold((errorMassage) {
+            //         return print(errorMassage);
+            //       }, (response) {
+            //         return print(response);
+            //       });
+            //     },
+            //   ),
+            // )
           ],
         ),
       ),

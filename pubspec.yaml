@@ -38,6 +38,12 @@ dependencies:
   smooth_page_indicator: ^1.1.0 
   dotted_line: ^3.2.2
   hexcolor: ^3.0.1
+  dartz: ^0.10.1
+  equatable: ^2.0.5
+  bloc: ^8.1.4
+  flutter_bloc: ^8.1.5
+  dio: ^5.4.3+1
+  get_it: ^7.7.0
 dev_dependencies:
   flutter_test:
     sdk: flutter
