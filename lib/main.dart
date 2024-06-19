@@ -4,11 +4,14 @@ import 'package:apple_shop/Screens/ProductsSc.dart';
 import 'package:apple_shop/Screens/ProfileScreen.dart';
 import 'package:apple_shop/Widgets/product_item.dart';
 import 'package:apple_shop/constant/color.dart';
+import 'package:apple_shop/data/repository/Authentication_repository.dart';
 import 'package:apple_shop/data/source/Athentication.dart';
 import 'package:apple_shop/di.dart';
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
   await getItInit();
   runApp(const MainPage());
 }
@@ -33,11 +36,19 @@ class _MainPageState extends State<MainPage> {
           children: [
             Center(
               child: ElevatedButton(
-                  onPressed: () {
-                    var response = AuthenticationRemote();
-                    response.register('Hajdani', '12345678', '12345678');
-                  },
-                  child: Text('GetData')),
+                onPressed: () async {
+                  var either = await AuthenticationRepository()
+                      .login('first', '11111111');
+                  var shared = locator.get<SharedPreferences>();
+                  print(shared.getString('acces_token'));
+                  // either.fold((errormessage) {
+                  //   print(errormessage);
+                  // }, (successmessage) {
+                  //   print(successmessage);
+                  // });
+                },
+                child: Text('GetData'),
+              ),
             )
           ],
         ),
