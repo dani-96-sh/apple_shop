@@ -1,14 +1,15 @@
 import 'dart:ui';
 import 'package:apple_shop/Screens/BasketSc.dart';
+import 'package:apple_shop/Screens/LoginSc.dart';
 import 'package:apple_shop/Screens/ProductsSc.dart';
 import 'package:apple_shop/Screens/ProfileScreen.dart';
 import 'package:apple_shop/Widgets/product_item.dart';
 import 'package:apple_shop/constant/color.dart';
 import 'package:apple_shop/data/repository/Authentication_repository.dart';
-import 'package:apple_shop/data/source/Athentication.dart';
+
 import 'package:apple_shop/di.dart';
+import 'package:apple_shop/utility/auth_manager.dart';
 import 'package:flutter/material.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -30,29 +31,42 @@ class _MainPageState extends State<MainPage> {
     return MaterialApp(
       theme: ThemeData(fontFamily: 'GM'),
       debugShowCheckedModeBanner: false,
-      home: Scaffold(
-        body: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Center(
-              child: ElevatedButton(
-                onPressed: () async {
-                  var either = await AuthenticationRepository()
-                      .login('first', '11111111');
-                  var shared = locator.get<SharedPreferences>();
-                  print(shared.getString('acces_token'));
-                  // either.fold((errormessage) {
-                  //   print(errormessage);
-                  // }, (successmessage) {
-                  //   print(successmessage);
-                  // });
-                },
-                child: Text('GetData'),
-              ),
-            )
-          ],
-        ),
-      ),
+      home: Scaffold(body: SafeArea(child: LoginScreen())
+          //  Column(
+          //   mainAxisAlignment: MainAxisAlignment.center,
+          //   children: [
+          //     ElevatedButton(
+          //       onPressed: () async {
+          //         var either = await AuthenticationRepository()
+          //             .login('Hajdaniiii', '12345678');
+          //       },
+          //       child: Text('Login'),
+          //     ),
+          //     ElevatedButton(
+          //       onPressed: () async {
+          //         AuthManager.logout();
+          //       },
+          //       child: Text('Logout'),
+          //     ),
+          //     ValueListenableBuilder(
+          //       valueListenable: AuthManager.authChangeNotifire,
+          //       builder: (BuildContext context, dynamic value, Widget? child) {
+          //         if (value == null || value.isEmpty) {
+          //           return const Text(
+          //             'شما وارد نشدید',
+          //             style: TextStyle(color: Colors.black),
+          //           );
+          //         } else {
+          //           return const Text(
+          //             'شما وارد شدید',
+          //             style: TextStyle(color: Colors.black),
+          //           );
+          //         }
+          //       },
+          //     )
+          //   ],
+          // ),
+          ),
     );
   }
 

@@ -7,6 +7,7 @@ class InitHome extends HomeState {
   List<Object?> get props => [];
 }
 
+// ignore: must_be_immutable
 class UpdateHome extends HomeState {
   int x;
   UpdateHome(this.x);

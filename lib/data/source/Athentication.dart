@@ -36,12 +36,21 @@ class AuthenticationRemote implements IAthenticationDatasource {
   @override
   Future<String> login(String username, String password) async {
     try {
-      var response = await _dio.post('collections/users/auth-with-password',
-          data: {'identity': username, 'password': password});
+      var response =
+          await _dio.post('collections/users/auth-with-password', data: {
+        'identity': username,
+        'password': password,
+      });
       if (response.statusCode == 200) {
         return response.data?['token'];
       }
-    } on DioError catch (e) {}
-    return '';
+    } on DioException catch (e) {
+      print(e);
+      // throw ApiException(e.response?.data, e.response?.data['message']);
+    } catch (ex) {
+      print(ex);
+      // throw ApiException(0, 'error');
+    }
+    return 'ddd';
   }
 }
