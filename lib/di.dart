@@ -4,7 +4,7 @@ import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-var locator = GetIt.instance;
+GetIt locator = GetIt.instance;
 Future<void> getItInit() async {
   locator.registerSingleton<Dio>(
     Dio(
