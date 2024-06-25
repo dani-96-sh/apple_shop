@@ -1,5 +1,9 @@
+import 'package:apple_shop/bloc/Authentication/AuthBloc.dart';
+import 'package:apple_shop/bloc/Authentication/AuthEvent.dart';
+import 'package:apple_shop/bloc/Authentication/AuthState.dart';
 import 'package:apple_shop/constant/color.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -9,8 +13,8 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
-  final usernamecontroller = TextEditingController();
-  final passwordcontroller = TextEditingController();
+  final usernamecontroller = TextEditingController(text: 'first');
+  final passwordcontroller = TextEditingController(text: '11111111');
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -78,20 +82,41 @@ class _LoginScreenState extends State<LoginScreen> {
                 SizedBox(
                   height: 10,
                 ),
-                ElevatedButton(
-                  onPressed: () {},
-                  child: Text(
-                    'Login into Your Account',
-                    style: TextStyle(color: Colors.white),
-                  ),
-                  style: ElevatedButton.styleFrom(
-                    minimumSize: Size(200, 40),
-                    backgroundColor: CustomColors.blueindicator,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(12),
-                    ),
-                  ),
-                )
+                BlocBuilder<Authbloc, Authstate>(
+                  builder: (context, state) {
+                    if (state is AuthInitState) {
+                      return ElevatedButton(
+                        onPressed: () {
+                          BlocProvider.of<Authbloc>(context).add(
+                              AuthLoginRequest(usernamecontroller.text,
+                                  passwordcontroller.text));
+                        },
+                        child: Text(
+                          'Login into Your Account',
+                          style: TextStyle(color: Colors.white),
+                        ),
+                        style: ElevatedButton.styleFrom(
+                          minimumSize: Size(200, 40),
+                          backgroundColor: CustomColors.blueindicator,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(12),
+                          ),
+                        ),
+                      );
+                    }
+                    if (state is AuthloadingState) {
+                      return CircularProgressIndicator();
+                    }
+                    if (state is AuthResponseState) {
+                      return state.response.fold((l) {
+                        return Text(l);
+                      }, (r) {
+                        return Text(r);
+                      });
+                    }
+                    return Text('');
+                  },
+                ),
               ],
             ),
             margin: EdgeInsets.symmetric(horizontal: 20, vertical: 10),

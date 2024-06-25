@@ -4,12 +4,11 @@ import 'package:apple_shop/Screens/LoginSc.dart';
 import 'package:apple_shop/Screens/ProductsSc.dart';
 import 'package:apple_shop/Screens/ProfileScreen.dart';
 import 'package:apple_shop/Widgets/product_item.dart';
+import 'package:apple_shop/bloc/Authentication/AuthBloc.dart';
 import 'package:apple_shop/constant/color.dart';
-import 'package:apple_shop/data/repository/Authentication_repository.dart';
-
 import 'package:apple_shop/di.dart';
-import 'package:apple_shop/utility/auth_manager.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -31,7 +30,11 @@ class _MainPageState extends State<MainPage> {
     return MaterialApp(
       theme: ThemeData(fontFamily: 'GM'),
       debugShowCheckedModeBanner: false,
-      home: Scaffold(body: SafeArea(child: LoginScreen())
+      home: Scaffold(
+          body: BlocProvider(
+        create: (context) => Authbloc(),
+        child: LoginScreen(),
+      )
           //  Column(
           //   mainAxisAlignment: MainAxisAlignment.center,
           //   children: [

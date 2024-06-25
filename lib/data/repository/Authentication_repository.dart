@@ -3,7 +3,7 @@ import 'package:apple_shop/di.dart';
 import 'package:apple_shop/utility/Api_Exception.dart';
 import 'package:apple_shop/utility/auth_manager.dart';
 import 'package:dartz/dartz.dart';
-import 'package:shared_preferences/shared_preferences.dart';
+// import 'package:shared_preferences/shared_preferences.dart';
 
 abstract class IAuthRepository {
   Future<Either<String, String>> register(
@@ -14,8 +14,8 @@ abstract class IAuthRepository {
 
 //مسئول این هست که دیتا بده یا ارور
 class AuthenticationRepository extends IAuthRepository {
-  final SharedPreferences _sharedpref = locator.get();
-  final IAthenticationDatasource _datasource = locator.get();
+  // final SharedPreferences _sharedpref = locator.get();
+  final IAuthenticationDatasource _datasource = locator.get();
 
   @override
   Future<Either<String, String>> register(

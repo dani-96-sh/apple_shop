@@ -1,7 +1,8 @@
 import 'package:apple_shop/di.dart';
+import 'package:apple_shop/utility/Api_Exception.dart';
 import 'package:dio/dio.dart';
 
-abstract class IAthenticationDatasource {
+abstract class IAuthenticationDatasource {
   Future<void> register(
       String username, String password, String passwordConfirm);
 
@@ -11,7 +12,7 @@ abstract class IAthenticationDatasource {
   );
 }
 
-class AuthenticationRemote implements IAthenticationDatasource {
+class AuthenticationRemote implements IAuthenticationDatasource {
   final Dio _dio = locator.get();
 
   @override
@@ -28,8 +29,9 @@ class AuthenticationRemote implements IAthenticationDatasource {
       );
       print('${response.statusCode}');
     } on DioException catch (ex) {
-      print(ex.response?.data['message']);
-      print(ex.message);
+      throw ApiException(ex.response?.statusCode, ex.response?.data['message']);
+    } catch (ex) {
+      print(ex);
     }
   }
 
