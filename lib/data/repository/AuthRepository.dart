@@ -1,4 +1,4 @@
-import 'package:apple_shop/data/source/Athentication.dart';
+import 'package:apple_shop/data/source/AuthDatasource.dart';
 import 'package:apple_shop/di.dart';
 import 'package:apple_shop/utility/Api_Exception.dart';
 import 'package:apple_shop/utility/auth_manager.dart';
@@ -24,7 +24,7 @@ class AuthenticationRepository extends IAuthRepository {
       await _datasource.register('Hajdaniiii', '12345678', '12345678');
       return right('ثبت نام انجام شد');
     } catch (ex) {
-      return left('خطا محتوای متنی ندارد');
+      return left('خطا,محتوای متنی ندارد');
     }
   }
 

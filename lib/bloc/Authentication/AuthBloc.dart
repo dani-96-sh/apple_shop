@@ -1,6 +1,6 @@
 import 'package:apple_shop/bloc/Authentication/AuthEvent.dart';
 import 'package:apple_shop/bloc/Authentication/AuthState.dart';
-import 'package:apple_shop/data/repository/Authentication_repository.dart';
+import 'package:apple_shop/data/repository/AuthRepository.dart';
 import 'package:apple_shop/di.dart';
 import 'package:bloc/bloc.dart';
 
