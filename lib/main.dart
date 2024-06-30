@@ -1,10 +1,9 @@
 import 'dart:ui';
 import 'package:apple_shop/Screens/BasketSc.dart';
-import 'package:apple_shop/Screens/LoginSc.dart';
 import 'package:apple_shop/Screens/ProductsSc.dart';
 import 'package:apple_shop/Screens/ProfileScreen.dart';
-import 'package:apple_shop/Widgets/product_item.dart';
-import 'package:apple_shop/bloc/Authentication/AuthBloc.dart';
+import 'package:apple_shop/Screens/CategorySc.dart';
+import 'package:apple_shop/bloc/Category/CateBloc.dart';
 import 'package:apple_shop/constant/color.dart';
 import 'package:apple_shop/di.dart';
 import 'package:flutter/material.dart';
@@ -28,49 +27,9 @@ class _MainPageState extends State<MainPage> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      theme: ThemeData(fontFamily: 'GM'),
-      debugShowCheckedModeBanner: false,
-      home: Scaffold(
-          body: BlocProvider(
-        create: (context) => Authbloc(),
-        child: LoginScreen(),
-      )
-          //  Column(
-          //   mainAxisAlignment: MainAxisAlignment.center,
-          //   children: [
-          //     ElevatedButton(
-          //       onPressed: () async {
-          //         var either = await AuthenticationRepository()
-          //             .login('Hajdaniiii', '12345678');
-          //       },
-          //       child: Text('Login'),
-          //     ),
-          //     ElevatedButton(
-          //       onPressed: () async {
-          //         AuthManager.logout();
-          //       },
-          //       child: Text('Logout'),
-          //     ),
-          //     ValueListenableBuilder(
-          //       valueListenable: AuthManager.authChangeNotifire,
-          //       builder: (BuildContext context, dynamic value, Widget? child) {
-          //         if (value == null || value.isEmpty) {
-          //           return const Text(
-          //             'شما وارد نشدید',
-          //             style: TextStyle(color: Colors.black),
-          //           );
-          //         } else {
-          //           return const Text(
-          //             'شما وارد شدید',
-          //             style: TextStyle(color: Colors.black),
-          //           );
-          //         }
-          //       },
-          //     )
-          //   ],
-          // ),
-          ),
-    );
+        theme: ThemeData(fontFamily: 'GM'),
+        debugShowCheckedModeBanner: false,
+        home: mainScafold());
   }
 
   Scaffold mainScafold() {
@@ -142,7 +101,8 @@ class _MainPageState extends State<MainPage> {
                         )
                       ]),
                       child: Image(
-                          image: AssetImage('images/icon_category_active.png')),
+                        image: AssetImage('images/icon_category_active.png'),
+                      ),
                     ),
                   ),
                   icon: Image.asset('images/icon_category.png'),
@@ -156,13 +116,15 @@ class _MainPageState extends State<MainPage> {
                     child: Container(
                       decoration: BoxDecoration(boxShadow: [
                         BoxShadow(
-                            blurRadius: 20,
-                            color: CustomColors.blueindicator,
-                            spreadRadius: -7,
-                            offset: Offset(0.0, 13))
+                          blurRadius: 20,
+                          color: CustomColors.blueindicator,
+                          spreadRadius: -7,
+                          offset: Offset(0.0, 13),
+                        )
                       ]),
                       child: Image(
-                          image: AssetImage('images/icon_profile_active.png')),
+                        image: AssetImage('images/icon_profile_active.png'),
+                      ),
                     ),
                   ),
                 )
@@ -179,7 +141,10 @@ class _MainPageState extends State<MainPage> {
   List<Widget> GetPages = [
     ProductSc(),
     BasketSC(),
-    ProductItem(),
+    BlocProvider(
+      create: (context) => CateBloc(),
+      child: CategoriesSc(),
+    ),
     ProfileScreen()
   ];
 }

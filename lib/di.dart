@@ -1,5 +1,7 @@
 import 'package:apple_shop/data/repository/AuthRepository.dart';
+import 'package:apple_shop/data/repository/categoryRepo.dart';
 import 'package:apple_shop/data/source/AuthDatasource.dart';
+import 'package:apple_shop/data/source/categoryDatasource.dart';
 import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -14,11 +16,22 @@ Future<void> getItInit() async {
   );
 
   locator.registerSingleton<SharedPreferences>(
-      await SharedPreferences.getInstance());
+    await SharedPreferences.getInstance(),
+  );
+
   //datasources
-  locator
-      .registerFactory<IAuthenticationDatasource>(() => AuthenticationRemote());
+  locator.registerFactory<IAuthenticationDatasource>(
+    () => AuthenticationRemote(),
+  );
+  locator.registerFactory<IcategoryDataSource>(
+    () => Categorydatasource(),
+  );
 
   //repositories
-  locator.registerFactory<IAuthRepository>(() => AuthenticationRepository());
+  locator.registerFactory<IAuthRepository>(
+    () => AuthenticationRepository(),
+  );
+  locator.registerFactory<IcategoryRepository>(
+    () => CategoryRepo(),
+  );
 }
