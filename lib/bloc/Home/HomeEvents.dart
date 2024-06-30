@@ -1,3 +1,3 @@
 abstract class HomeEvents {}
 
-class clickEvents extends HomeEvents {}
+class HomeinitilzedData extends HomeEvents {}

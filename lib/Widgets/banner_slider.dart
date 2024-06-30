@@ -1,12 +1,15 @@
 import 'dart:async';
 
+import 'package:apple_shop/Widgets/cached_image.dart';
 import 'package:apple_shop/constant/color.dart';
+import 'package:apple_shop/model/bannerModel.dart';
 import 'package:flutter/material.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
-// ignore: must_be_immutable
 class BannerSlider extends StatefulWidget {
-  BannerSlider({super.key});
+  List<BannerModel>? bannerList;
+
+  BannerSlider({this.bannerList, super.key});
 
   @override
   State<BannerSlider> createState() => _BannerSliderState();
@@ -20,18 +23,24 @@ class _BannerSliderState extends State<BannerSlider> {
 
   int _currentpage = 0;
 
+  List<BannerModel>? bannerList;
+
   @override
   void initState() {
     super.initState();
-    Timer.periodic(Duration(seconds: 3), (timer) {
-      if (_currentpage < sliderCount) {
-        _currentpage++;
-      } else {
-        _currentpage = 0;
-      }
-      controller.animateToPage(_currentpage,
-          duration: Duration(milliseconds: 600), curve: Curves.ease);
-    });
+    Timer.periodic(
+      Duration(seconds: 3),
+      (timer) {
+        if (_currentpage < sliderCount) {
+          _currentpage++;
+        } else {
+          _currentpage = 0;
+        }
+        controller.animateToPage(_currentpage,
+            duration: Duration(milliseconds: 600), curve: Curves.ease);
+      },
+    );
+    bannerList = widget.bannerList;
   }
 
   @override
@@ -48,20 +57,14 @@ class _BannerSliderState extends State<BannerSlider> {
                   _currentpage = index;
                 });
               },
-              itemCount: sliderCount,
+              itemCount: bannerList!.length,
               controller: controller,
               itemBuilder: (context, index) {
                 return Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 12),
-                  child: Container(
-                    margin: EdgeInsets.all(8),
-                    width: 100,
-                    height: 100,
-                    decoration: BoxDecoration(
-                        color: Colors.blue,
-                        borderRadius: BorderRadius.circular(15)),
-                  ),
-                );
+                    padding: EdgeInsets.only(left: 12, right: 12, top: 20),
+                    child: CachedImage(
+                      imageUrl: bannerList![index].thumbnail,
+                    ));
               }),
         ),
         Positioned(

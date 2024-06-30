@@ -1,9 +1,10 @@
 import 'dart:ui';
 import 'package:apple_shop/Screens/BasketSc.dart';
-import 'package:apple_shop/Screens/ProductsSc.dart';
+import 'package:apple_shop/Screens/HomeScreen.dart';
 import 'package:apple_shop/Screens/ProfileScreen.dart';
 import 'package:apple_shop/Screens/CategorySc.dart';
 import 'package:apple_shop/bloc/Category/CateBloc.dart';
+import 'package:apple_shop/bloc/Home/HomeBloc.dart';
 import 'package:apple_shop/constant/color.dart';
 import 'package:apple_shop/di.dart';
 import 'package:flutter/material.dart';
@@ -139,7 +140,10 @@ class _MainPageState extends State<MainPage> {
   }
 
   List<Widget> GetPages = [
-    ProductSc(),
+    BlocProvider(
+      create: (context) => Homebloc(),
+      child: HomeScreen(),
+    ),
     BasketSC(),
     BlocProvider(
       create: (context) => CateBloc(),
