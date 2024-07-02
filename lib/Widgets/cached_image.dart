@@ -4,7 +4,8 @@ import 'package:flutter/material.dart';
 // ignore: must_be_immutable
 class CachedImage extends StatelessWidget {
   String? imageUrl;
-  CachedImage({super.key, this.imageUrl});
+  BoxFit? boxFit;
+  CachedImage({super.key, this.imageUrl, this.boxFit});
 
   @override
   Widget build(BuildContext context) {
@@ -12,7 +13,7 @@ class CachedImage extends StatelessWidget {
       borderRadius: BorderRadius.circular(20),
       child: CachedNetworkImage(
         imageUrl: imageUrl ?? '',
-        fit: BoxFit.cover,
+        fit: boxFit,
         placeholder: (context, url) {
           return Container(
             decoration: BoxDecoration(

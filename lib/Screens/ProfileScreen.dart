@@ -27,11 +27,11 @@ class ProfileScreen extends StatelessWidget {
                   children: [
                     Expanded(
                       child: Text(
-                        'Profile',
+                        'پروفایل',
                         textAlign: TextAlign.center,
                         style: TextStyle(
-                            fontFamily: 'Gb',
-                            fontSize: 16,
+                            fontFamily: 'Sh',
+                            fontSize: 18,
                             color: CustomColors.blueindicator),
                       ),
                     ),

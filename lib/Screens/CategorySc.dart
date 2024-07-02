@@ -30,6 +30,35 @@ class _CategoriesScState extends State<CategoriesSc> {
       body: SafeArea(
         child: CustomScrollView(
           slivers: <Widget>[
+            SliverToBoxAdapter(
+              child: Padding(
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 28, vertical: 12),
+                child: Container(
+                  padding: EdgeInsets.all(10),
+                  decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(12)),
+                  height: 46,
+                  child: Row(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Expanded(
+                        child: Text(
+                          'دسته بندی',
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                              fontFamily: 'Sh',
+                              fontSize: 18,
+                              color: CustomColors.blueindicator),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            ),
             BlocBuilder<CateBloc, CateState>(
               builder: (context, state) {
                 if (state is CateLoading) {
@@ -66,16 +95,16 @@ class _ListCategory extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SliverPadding(
-      padding: EdgeInsets.symmetric(horizontal: 25, vertical: 10),
+      padding: EdgeInsets.symmetric(horizontal: 25, vertical: 5),
       sliver: SliverGrid(
           delegate: SliverChildBuilderDelegate((context, index) {
             return CachedImage(imageUrl: list?[index].thumbnail);
           }, childCount: list?.length ?? 0),
           gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
               crossAxisCount: 2,
-              crossAxisSpacing: 20,
-              childAspectRatio: 2 / 2.8,
-              mainAxisSpacing: 20)),
+              crossAxisSpacing: 12,
+              childAspectRatio: 2.6 / 2.8,
+              mainAxisSpacing: 5)),
     );
   }
 }

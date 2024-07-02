@@ -99,6 +99,11 @@ flutter:
         - asset: assets/fonts/GilroyHeavy.ttf
           weight: 900
 
+    - family: Sh
+      fonts:
+        - asset: assets/fonts/ShabnamMedium.ttf
+          weight: 500      
+
 
   #
   # For details regarding fonts from package dependencies,

@@ -19,7 +19,7 @@ class _BannerSliderState extends State<BannerSlider> {
   PageController controller =
       PageController(viewportFraction: 1, initialPage: 0);
 
-  int sliderCount = 5;
+  int sliderCount = 4;
 
   int _currentpage = 0;
 
@@ -63,6 +63,7 @@ class _BannerSliderState extends State<BannerSlider> {
                 return Padding(
                     padding: EdgeInsets.only(left: 12, right: 12, top: 20),
                     child: CachedImage(
+                      boxFit: BoxFit.cover,
                       imageUrl: bannerList![index].thumbnail,
                     ));
               }),

@@ -35,11 +35,11 @@ class _BasketSCState extends State<BasketSC> {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Text(
-                            'Basket',
+                            'سبد خرید',
                             textAlign: TextAlign.center,
                             style: TextStyle(
-                                fontFamily: 'Gb',
-                                fontSize: 16,
+                                fontFamily: 'Sh',
+                                fontSize: 18,
                                 color: CustomColors.blueindicator),
                           ),
                         ],

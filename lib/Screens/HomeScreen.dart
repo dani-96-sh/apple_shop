@@ -5,9 +5,7 @@ import 'package:apple_shop/bloc/Home/HomeBloc.dart';
 import 'package:apple_shop/bloc/Home/HomeEvents.dart';
 import 'package:apple_shop/bloc/Home/HomeState.dart';
 import 'package:apple_shop/constant/color.dart';
-import 'package:apple_shop/data/repository/BannerRepo.dart';
-import 'package:apple_shop/utility/Api_Exception.dart';
-
+import 'package:apple_shop/model/ProductModel.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -35,9 +33,13 @@ class _HomeScreenState extends State<HomeScreen> {
             slivers: <Widget>[
               if (state is HomeLoadingState) ...[
                 SliverToBoxAdapter(
-                  child: CircularProgressIndicator(),
+                  child: SizedBox(
+                      width: 24,
+                      height: 24,
+                      child: CircularProgressIndicator()),
                 )
               ],
+              SearchBox(),
               if (state is HomeSuccessState) ...[
                 state.bannerlist.fold((l) {
                   return SliverToBoxAdapter(
@@ -47,11 +49,24 @@ class _HomeScreenState extends State<HomeScreen> {
                   return BannerList(r);
                 })
               ],
-              SearchBox(),
-              SortingItem(),
-              Sorting(),
-              Titles(),
-              BestSeller(),
+              SortingItemTitle(),
+              if (state is HomeSuccessState) ...[
+                state.categoryList.fold((l) {
+                  return SliverToBoxAdapter(
+                    child: Text(''),
+                  );
+                }, (categorylist) {
+                  return CategoryList(categorylist);
+                })
+              ],
+              BestSellerItem(),
+              if (state is HomeSuccessState) ...[
+                state.productlist.fold((ifLeft) {
+                  return SliverToBoxAdapter(child: Text(ifLeft));
+                }, (productlist) {
+                  return BestSellerProduct(productlist);
+                })
+              ],
               BestSellersecound(),
               BestSellerthird(),
             ],
@@ -71,7 +86,7 @@ class _HomeScreenState extends State<HomeScreen> {
           itemBuilder: (BuildContext context, int index) {
             return Padding(
               padding: const EdgeInsets.symmetric(horizontal: 12),
-              child: ProductItem(),
+              child: Text(''),
             );
           },
         ),
@@ -105,17 +120,17 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 
-  SliverToBoxAdapter BestSeller() {
+  SliverToBoxAdapter BestSellerProduct(productlist) {
     return SliverToBoxAdapter(
       child: SizedBox(
         height: 200,
         child: ListView.builder(
-          itemCount: 12,
+          itemCount: productlist.length,
           scrollDirection: Axis.horizontal,
           itemBuilder: (BuildContext context, int index) {
             return Padding(
               padding: const EdgeInsets.symmetric(horizontal: 12),
-              child: ProductItem(),
+              child: ProductItem(product: productlist[index]),
             );
           },
         ),
@@ -123,7 +138,7 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 
-  SliverToBoxAdapter SortingItem() {
+  SliverToBoxAdapter SortingItemTitle() {
     return SliverToBoxAdapter(
       child: Row(
         children: [
@@ -139,7 +154,7 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 
-  SliverToBoxAdapter Titles() {
+  SliverToBoxAdapter BestSellerItem() {
     return SliverToBoxAdapter(
       child: Padding(
         padding: EdgeInsets.all(15),
@@ -165,9 +180,11 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 
-  SliverToBoxAdapter Sorting() {
+  SliverToBoxAdapter CategoryList(categorylist) {
     return SliverToBoxAdapter(
-      child: SortItem(),
+      child: SortItem(
+        categorylist: categorylist,
+      ),
     );
   }
 
@@ -187,10 +204,12 @@ class _HomeScreenState extends State<HomeScreen> {
               Image.asset('images/icon_search.png'),
               Expanded(
                 child: Text(
-                  'Search for Products',
+                  'بگرد و پیدا کن',
                   textAlign: TextAlign.center,
                   style: TextStyle(
-                      fontFamily: 'Gb', fontSize: 16, color: Colors.grey),
+                      fontFamily: 'Sh',
+                      fontSize: 18,
+                      color: CustomColors.blueindicator),
                 ),
               ),
               Image.asset('images/icon_apple_blue.png'),

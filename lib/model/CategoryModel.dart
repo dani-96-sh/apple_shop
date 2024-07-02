@@ -25,7 +25,7 @@ class CategoryModel {
       jsonObject['collectionName'],
       jsonObject['color'],
       jsonObject['created'],
-      jsonObject['icon'],
+      'https://startflutter.ir/api/files/${jsonObject['collectionId']}/${jsonObject['id']}/${jsonObject['icon']}',
       jsonObject['id'],
       'https://startflutter.ir/api/files/${jsonObject['collectionId']}/${jsonObject['id']}/${jsonObject['thumbnail']}',
       jsonObject['title'],
