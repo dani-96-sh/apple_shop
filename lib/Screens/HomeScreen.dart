@@ -1,11 +1,10 @@
-import 'package:apple_shop/Widgets/SortItems.dart';
-import 'package:apple_shop/Widgets/banner_slider.dart';
-import 'package:apple_shop/Widgets/product_item.dart';
+import 'package:apple_shop/widgets/SortItems.dart';
+import 'package:apple_shop/widgets/banner_slider.dart';
+import 'package:apple_shop/widgets/product_item.dart';
 import 'package:apple_shop/bloc/Home/HomeBloc.dart';
 import 'package:apple_shop/bloc/Home/HomeEvents.dart';
 import 'package:apple_shop/bloc/Home/HomeState.dart';
 import 'package:apple_shop/constant/color.dart';
-import 'package:apple_shop/model/ProductModel.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -53,22 +52,30 @@ class _HomeScreenState extends State<HomeScreen> {
               if (state is HomeSuccessState) ...[
                 state.categoryList.fold((l) {
                   return SliverToBoxAdapter(
-                    child: Text(''),
+                    child: Text('خطا'),
                   );
                 }, (categorylist) {
                   return CategoryList(categorylist);
                 })
               ],
-              BestSellerItem(),
+              HotestProductTitle(),
               if (state is HomeSuccessState) ...[
-                state.productlist.fold((ifLeft) {
+                state.HotestProductList.fold((ifLeft) {
                   return SliverToBoxAdapter(child: Text(ifLeft));
                 }, (productlist) {
-                  return BestSellerProduct(productlist);
+                  return HotestProductItem(productlist);
                 })
               ],
-              BestSellersecound(),
-              BestSellerthird(),
+              BestSelleTitle(),
+              if (state is HomeSuccessState) ...[
+                state.GetBestSellerProduct.fold((ifLeft) {
+                  return SliverToBoxAdapter(
+                    child: Text(ifLeft),
+                  );
+                }, (BestSellProduct) {
+                  return BestSelleProduct(BestSellProduct);
+                })
+              ]
             ],
           );
         },
@@ -76,17 +83,17 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 
-  SliverToBoxAdapter BestSellerthird() {
+  BestSelleProduct(BestSellProduct) {
     return SliverToBoxAdapter(
       child: SizedBox(
         height: 200,
         child: ListView.builder(
-          itemCount: 12,
+          itemCount: BestSellProduct.length,
           scrollDirection: Axis.horizontal,
           itemBuilder: (BuildContext context, int index) {
             return Padding(
               padding: const EdgeInsets.symmetric(horizontal: 12),
-              child: Text(''),
+              child: ProductItem(product: BestSellProduct[index]),
             );
           },
         ),
@@ -94,33 +101,38 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 
-  SliverToBoxAdapter BestSellersecound() {
+  BestSelleTitle() {
     return SliverToBoxAdapter(
       child: Padding(
         padding: EdgeInsets.all(15),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Text(
-              'Best selles',
-              style: TextStyle(color: Colors.grey, fontSize: 16),
-            ),
             Row(
               children: [
-                Text('See More'),
+                Icon(Icons.chevron_left_sharp),
+                Text(
+                  'بیشتر',
+                  style: TextStyle(
+                      color: Colors.grey, fontSize: 18, fontFamily: 'Sh'),
+                ),
                 SizedBox(
                   width: 5,
                 ),
-                Icon(Icons.chevron_right_sharp)
               ],
-            )
+            ),
+            Text(
+              'پرفروش ترین',
+              style: TextStyle(
+                  color: CustomColors.gery, fontSize: 18, fontFamily: 'Sh'),
+            ),
           ],
         ),
       ),
     );
   }
 
-  SliverToBoxAdapter BestSellerProduct(productlist) {
+  HotestProductItem(productlist) {
     return SliverToBoxAdapter(
       child: SizedBox(
         height: 200,
@@ -138,15 +150,17 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 
-  SliverToBoxAdapter SortingItemTitle() {
+  SortingItemTitle() {
     return SliverToBoxAdapter(
       child: Row(
+        mainAxisAlignment: MainAxisAlignment.end,
         children: [
           Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 5),
+            padding: const EdgeInsets.all(15),
             child: Text(
-              'Sorting',
-              style: TextStyle(color: Colors.grey),
+              'دسته بندی',
+              style:
+                  TextStyle(color: Colors.grey, fontFamily: 'Sh', fontSize: 18),
             ),
           )
         ],
@@ -154,33 +168,38 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 
-  SliverToBoxAdapter BestSellerItem() {
+  HotestProductTitle() {
     return SliverToBoxAdapter(
       child: Padding(
         padding: EdgeInsets.all(15),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Text(
-              'Best selles',
-              style: TextStyle(color: Colors.grey, fontSize: 16),
-            ),
             Row(
               children: [
-                Text('See More'),
+                Icon(Icons.chevron_left_sharp),
+                Text(
+                  'بیشتر',
+                  style: TextStyle(
+                      color: Colors.grey, fontSize: 18, fontFamily: 'Sh'),
+                ),
                 SizedBox(
                   width: 5,
                 ),
-                Icon(Icons.chevron_right_sharp)
               ],
-            )
+            ),
+            Text(
+              'داغ ترین ',
+              style: TextStyle(
+                  color: CustomColors.gery, fontSize: 18, fontFamily: 'Sh'),
+            ),
           ],
         ),
       ),
     );
   }
 
-  SliverToBoxAdapter CategoryList(categorylist) {
+  CategoryList(categorylist) {
     return SliverToBoxAdapter(
       child: SortItem(
         categorylist: categorylist,
@@ -188,7 +207,7 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 
-  SliverToBoxAdapter SearchBox() {
+  SearchBox() {
     return SliverToBoxAdapter(
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 28, vertical: 12),
@@ -220,7 +239,7 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 
-  SliverToBoxAdapter BannerList(Bannerlist) {
+  BannerList(Bannerlist) {
     return SliverToBoxAdapter(
       child: BannerSlider(
         bannerList: Bannerlist,

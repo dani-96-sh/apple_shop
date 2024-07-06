@@ -1,4 +1,4 @@
-import 'package:apple_shop/Widgets/cached_image.dart';
+import 'package:apple_shop/widgets/cached_image.dart';
 import 'package:apple_shop/model/CategoryModel.dart';
 import 'package:flutter/material.dart';
 

@@ -1,4 +1,4 @@
-import 'package:apple_shop/Widgets/itemchip.dart';
+import 'package:apple_shop/widgets/itemchip.dart';
 import 'package:apple_shop/constant/color.dart';
 import 'package:flutter/material.dart';
 

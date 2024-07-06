@@ -15,5 +15,10 @@ class HomeSuccessState extends HomeState {
   Either<String, List<CategoryModel>> categoryList;
 
   Either<String, List<ProductModel>> productlist;
-  HomeSuccessState(this.bannerlist, this.categoryList, this.productlist);
+
+  Either<String, List<ProductModel>> HotestProductList;
+
+  Either<String, List<ProductModel>> GetBestSellerProduct;
+  HomeSuccessState(this.bannerlist, this.categoryList, this.productlist,
+      this.HotestProductList, this.GetBestSellerProduct);
 }

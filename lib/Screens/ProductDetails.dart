@@ -34,10 +34,10 @@ class _ProductDetailsState extends State<ProductDetails> {
                       Image.asset('images/icon_apple_blue.png'),
                       Expanded(
                         child: Text(
-                          'Iphones',
+                          'آیفون 13 پرو مکس',
                           textAlign: TextAlign.center,
                           style: TextStyle(
-                              fontFamily: 'Gb',
+                              fontFamily: 'Sh',
                               fontSize: 16,
                               color: CustomColors.blueindicator),
                         ),
@@ -57,7 +57,7 @@ class _ProductDetailsState extends State<ProductDetails> {
                       color: Colors.red,
                       borderRadius: BorderRadius.circular(6)),
                   child: Text(
-                    'Iphone SE 2023',
+                    'Iphone 13 pro max',
                     textAlign: TextAlign.center,
                     style: TextStyle(color: Colors.white, fontFamily: 'GB'),
                   ),

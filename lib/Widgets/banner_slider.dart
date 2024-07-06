@@ -1,6 +1,6 @@
 import 'dart:async';
 
-import 'package:apple_shop/Widgets/cached_image.dart';
+import 'package:apple_shop/widgets/cached_image.dart';
 import 'package:apple_shop/constant/color.dart';
 import 'package:apple_shop/model/bannerModel.dart';
 import 'package:flutter/material.dart';

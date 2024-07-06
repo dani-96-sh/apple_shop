@@ -19,8 +19,13 @@ class Homebloc extends Bloc<HomeEvents, HomeState> {
       var bannerlist = await _iBannerRepo.GetBanners();
       var categorylist = await _icategoryrepository.getCategories();
       var productlist = await _iProductRepository.GetProduct();
+      var HotestProductList = await _iProductRepository.GetHotestProduct();
+      var BestSellerProductList =
+          await _iProductRepository.GetBestSellerProduct();
+      emit(HomeSuccessState(bannerlist, categorylist, productlist,
+          HotestProductList, BestSellerProductList));
 
-      emit(HomeSuccessState(bannerlist, categorylist, productlist));
+      // emit(HomeRequestHotestState(HotestProductList));
     });
   }
 }
