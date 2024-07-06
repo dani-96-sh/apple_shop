@@ -62,13 +62,15 @@ class ItemChip extends StatelessWidget {
         ),
       ),
       child: Container(
-          // padding: EdgeInsets.all(24),
-          width: 12,
-          height: 12,
+        width: 24,
+        height: 24,
+        child: Center(
           child: CachedImage(
             imageUrl: category.icon,
             boxFit: BoxFit.none,
-          )),
+          ),
+        ),
+      ),
     );
   }
 }

@@ -1,0 +1,22 @@
+import 'package:apple_shop/data/source/DetailsProductDataSource.dart';
+import 'package:apple_shop/di.dart';
+import 'package:apple_shop/model/ImageProductModel.dart';
+import 'package:apple_shop/utility/Api_Exception.dart';
+import 'package:dartz/dartz.dart';
+
+abstract class IDetailsProductRepository {
+  Future<Either<String, List<ImageProductModel>>> GetGallery();
+}
+
+class DetailsProductRepository extends IDetailsProductRepository {
+  final IDetailProductDataSource _dataSource = locator.get();
+  @override
+  Future<Either<String, List<ImageProductModel>>> GetGallery() async {
+    try {
+      var response = await _dataSource.GetGallery();
+      return right(response);
+    } on ApiException catch (e) {
+      return left(e.message ?? 'خطا');
+    }
+  }
+}

@@ -1,8 +1,10 @@
 import 'package:apple_shop/Screens/ProductDetails.dart';
+import 'package:apple_shop/bloc/Product/product_bloc.dart';
 import 'package:apple_shop/widgets/cached_image.dart';
 import 'package:apple_shop/constant/color.dart';
 import 'package:apple_shop/model/ProductModel.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class ProductItem extends StatelessWidget {
   ProductItem({super.key, required this.product});
@@ -12,7 +14,10 @@ class ProductItem extends StatelessWidget {
     return GestureDetector(
       onTap: () {
         Navigator.of(context).push(MaterialPageRoute(
-          builder: (context) => ProductDetails(),
+          builder: (context) => BlocProvider(
+            create: (context) => ProductBloc(),
+            child: ProductDetails(),
+          ),
         ));
       },
       child: Container(
