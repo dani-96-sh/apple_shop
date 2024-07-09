@@ -3,10 +3,12 @@ import 'package:apple_shop/bloc/Product/productEvents.dart';
 import 'package:apple_shop/bloc/Product/productState.dart';
 import 'package:apple_shop/bloc/Product/product_bloc.dart';
 import 'package:apple_shop/constant/color.dart';
-import 'package:apple_shop/data/repository/ImageProductRepo.dart';
+import 'package:apple_shop/data/repository/DetailsProductRepo.dart';
 import 'package:apple_shop/di.dart';
 import 'package:apple_shop/model/ImageProductModel.dart';
+import 'package:apple_shop/model/VariantType.dart';
 import 'package:apple_shop/widgets/cached_image.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -100,44 +102,31 @@ class _ProductDetailsState extends State<ProductDetails> {
                     return GetGallery(GalleryImage: response);
                   })
                 },
+                //colors product
+                // if (state is SuccessProductState) ...{
+                //   state.variantList.fold(
+                //     (errormessage) {
+                //       return SliverToBoxAdapter(
+                //         child: Text(errormessage),
+                //       );
+                //     },
+                //     (VariantList) {
+                //       for (var variant in VariantList) {
+                //         print(variant.variantType.title);
+                //       for (var variantt in variant.variantList) {
+                //         print(variantt.name);
+                //       }
+                //       }
+                //       return Text('خطای ناشناخته');
+                //     },
+                //   )
+                // },
                 SliverPadding(
                   padding: EdgeInsets.symmetric(horizontal: 44),
                   sliver: SliverToBoxAdapter(
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Padding(
-                          padding: const EdgeInsets.only(left: 8),
-                          child: Text('Color Selection'),
-                        ),
-                        Row(
-                          children: [
-                            Container(
-                              margin: EdgeInsets.all(8),
-                              width: 23,
-                              height: 23,
-                              decoration: BoxDecoration(
-                                  color: Colors.red,
-                                  borderRadius: BorderRadius.circular(4)),
-                            ),
-                            Container(
-                              margin: EdgeInsets.all(8),
-                              width: 23,
-                              height: 23,
-                              decoration: BoxDecoration(
-                                  color: Colors.red,
-                                  borderRadius: BorderRadius.circular(4)),
-                            ),
-                            Container(
-                              margin: EdgeInsets.all(8),
-                              width: 23,
-                              height: 23,
-                              decoration: BoxDecoration(
-                                  color: Colors.red,
-                                  borderRadius: BorderRadius.circular(4)),
-                            )
-                          ],
-                        ),
                         Padding(
                           padding: const EdgeInsets.only(left: 8),
                           child: Text('Inner Memoristion '),
@@ -480,6 +469,62 @@ class _ProductDetailsState extends State<ProductDetails> {
   }
 }
 
+class ColorVariantList extends StatelessWidget {
+  VariantType variantcolorlist;
+  ColorVariantList(this.variantcolorlist, {super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return SliverPadding(
+      padding: EdgeInsets.symmetric(horizontal: 44),
+      sliver: SliverToBoxAdapter(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.end,
+          children: [
+            Padding(
+              padding: const EdgeInsets.only(right: 8),
+              child: Text(
+                variantcolorlist.title!,
+                style: TextStyle(fontFamily: 'Sh', fontSize: 18),
+              ),
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+                Container(
+                  margin: EdgeInsets.symmetric(horizontal: 6, vertical: 10),
+                  width: 23,
+                  height: 23,
+                  decoration: BoxDecoration(
+                      color: Colors.red,
+                      borderRadius: BorderRadius.circular(6)),
+                ),
+                Container(
+                  margin: EdgeInsets.symmetric(horizontal: 6, vertical: 10),
+                  width: 23,
+                  height: 23,
+                  decoration: BoxDecoration(
+                      color: Colors.red,
+                      borderRadius: BorderRadius.circular(6)),
+                ),
+                Container(
+                  margin: EdgeInsets.symmetric(horizontal: 6, vertical: 10),
+                  width: 23,
+                  height: 23,
+                  decoration: BoxDecoration(
+                      color: Colors.red,
+                      borderRadius: BorderRadius.circular(6)),
+                )
+              ],
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+// ignore: must_be_immutable
 class GetGallery extends StatefulWidget {
   GetGallery({super.key, required this.GalleryImage});
 

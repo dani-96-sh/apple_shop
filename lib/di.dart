@@ -1,6 +1,6 @@
 import 'package:apple_shop/data/repository/AuthRepository.dart';
 import 'package:apple_shop/data/repository/BannerRepo.dart';
-import 'package:apple_shop/data/repository/ImageProductRepo.dart';
+import 'package:apple_shop/data/repository/DetailsProductRepo.dart';
 import 'package:apple_shop/data/repository/ProductRepository.dart';
 import 'package:apple_shop/data/repository/categoryRepo.dart';
 import 'package:apple_shop/data/source/AuthDatasource.dart';
