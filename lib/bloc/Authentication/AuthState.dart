@@ -1,6 +1,6 @@
 import 'package:dartz/dartz.dart';
 
-class Authstate {}
+abstract class Authstate {}
 
 class AuthInitState extends Authstate {}
 

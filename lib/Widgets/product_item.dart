@@ -6,6 +6,7 @@ import 'package:apple_shop/model/ProductModel.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+// ignore: must_be_immutable
 class ProductItem extends StatelessWidget {
   ProductItem({super.key, required this.product});
   ProductModel product;

@@ -1,6 +1,6 @@
 import 'package:apple_shop/di.dart';
 import 'package:apple_shop/model/ProductModel.dart';
-import 'package:apple_shop/model/productvariant.dart';
+
 import 'package:apple_shop/utility/Api_Exception.dart';
 import 'package:dio/dio.dart';
 

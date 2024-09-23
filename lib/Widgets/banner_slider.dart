@@ -6,6 +6,7 @@ import 'package:apple_shop/model/bannerModel.dart';
 import 'package:flutter/material.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
+// ignore: must_be_immutable
 class BannerSlider extends StatefulWidget {
   List<BannerModel>? bannerList;
 

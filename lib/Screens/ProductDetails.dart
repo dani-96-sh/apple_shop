@@ -469,6 +469,7 @@ class _ProductDetailsState extends State<ProductDetails> {
   }
 }
 
+// ignore: must_be_immutable
 class ColorVariantList extends StatelessWidget {
   VariantType variantcolorlist;
   ColorVariantList(this.variantcolorlist, {super.key});

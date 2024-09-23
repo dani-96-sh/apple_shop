@@ -80,9 +80,7 @@ class Detailsproductdatasource extends IDetailProductDataSource {
     List<Productvariant> productVariantList = [];
 
     for (var variantType in variantTypeList) {
-      var variant = variantList
-          .where((element) => element.typeId == variantType.id)
-          .toList();
+      variantList.where((element) => element.typeId == variantType.id).toList();
       productVariantList.add(Productvariant(variantType, variantList));
     }
     return productVariantList;

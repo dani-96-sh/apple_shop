@@ -1,5 +1,4 @@
 import 'package:apple_shop/model/ImageProductModel.dart';
-import 'package:apple_shop/model/VariantType.dart';
 import 'package:apple_shop/model/productvariant.dart';
 import 'package:dartz/dartz.dart';
 
